@@ -27,3 +27,16 @@ strengthValue = "Weak";
     message.style.display = "block"
 
 });
+
+
+// on buttton click change the password visiblity
+
+submitButton.addEventListener("click",function(){
+    const passwordType = password.getAttribute('type');
+    if(passwordType === 'password')
+    {
+        password.setAttribute('type','text')}
+        else{
+            password.setAttribute('type','password')
+        }
+})
