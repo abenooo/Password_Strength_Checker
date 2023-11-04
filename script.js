@@ -5,22 +5,27 @@ const strength = document.getElementById("strength")
 const submitButton = document.querySelector("button");
 
 password.addEventListener("input", function (){
+
     const passwordValue = password.value;
     const passwordLength = passwordValue.length;
+    // add more validation
+const hasLetter = /[a-zA-Z]/.test(passwordValue);
+const hasNumber = /\d/.test(passwordValue);
+const hasSpecialChars = /[\^$*.\[\]{}()?\-"!@#%&/,><':;|_~`]/.test(passwordValue);
 
 
     let strengthValue = '';
     if (password === 0) {
         strengthValue = '';
     }
-    else if(passwordLength < 6){
+    else if(passwordLength < 6 || hasLetter && !hasNumber && !hasSpecialChars){
 strengthValue = "Weak";
     }
-    else if(passwordLength <10){
+    else if(passwordLength <10 || hasLetter && hasNumber && !hasSpecialChars){
         strengthValue = "Medium"
     }
-    else{
-        strengthValue = "Strong"
+    else if (passwordValue.length < 10 || hasLetter && hasNumber && hasSpecialChars) {
+        strengthValue = "Strong";
     }
 
     strength.textContent = strengthValue;
